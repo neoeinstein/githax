@@ -1,0 +1,20 @@
+#!/usr/bin/perl -w
+#
+# whowrote takes an svn url and lists all the authors associated with it.
+#  example:  whowrote file:///home/or/svrepo/torctl
+
+open F, "/usr/bin/svn log $ARGV[0] |" or die;
+
+%names = ();
+
+while (<F>) {
+    if ($next and /r\d+ \| (\w+)/) { 
+	$names{$1} = 1;
+    }
+    if (/^-{20}/) {$next =1;} else {$next=0;}
+}
+
+for $k (sort keys %names) {
+    print "$k\n";
+}
+

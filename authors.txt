@@ -5,3 +5,59 @@ karsten = Karsten Loesing <<karsten.loesing@gmx.net>
 nickm = Nick Mathewson <nickm@torproject.org>
 sebastian = Sebastian Hahn <sebastian@torproject.org>
 weasel = Peter Palfrader <peter@palfrader.org>
+
+# These are all the svn user ids as of 18118.  We don't need to get
+# people who only translate 
+# 
+#
+# Urz
+# aas23
+# aleksei
+# ampleyfly
+# anonym
+# arma
+# badbytes
+# benedikt
+# bergo
+# bogdro
+# bridgefish
+# c
+# chiussi
+# chrisw
+# coderman
+# djhasis
+# double
+# fallon
+# fredzupy
+# goodell
+# guest
+# hanru
+# ioerror
+# jan
+# kaner
+# kasimir
+# kloesing
+# le
+# mfr
+# mikeperry
+# montrose
+# moxie
+# nickm
+# pde
+# phobos
+# pootle
+# qbi
+# renner
+# ruben
+# saakan99
+# sah
+# sebastian
+# shava
+# sjm217
+# sn275
+# squires
+# syverson
+# thomass
+# weasel
+# ygrek
+# zed
