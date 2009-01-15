@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Script from http://frank.thomas-alfeld.de/wp/2008/08/30/converting-git-svn-tag-branches-to-real-tags/
+# Based on cript from http://frank.thomas-alfeld.de/wp/2008/08/30/converting-git-svn-tag-branches-to-real-tags/
 
 for branch in `git branch -r`; do
     if [ `echo $branch | egrep "svn/tags/.+$"` ]; then
@@ -11,7 +11,7 @@ for branch in `git branch -r`; do
         echo "Tag $version [Y/n]?"
         read yesno
         if [ -z $yesno ] || [ $yesno = "Y" ]; then
-            git tag -s -f -m "$subject" "debian/$version" "$branch^"
+            git tag -s -f -m "$subject" "$version" "$branch^"
             git branch -d -r $branch
         fi
     fi
