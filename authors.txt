@@ -1,0 +1,6 @@
+nickm = Nick Mathewson <nickm@torproject.org>
+arma = Roger Dingledine <arma@torproject.org>
+ioerror = Jacob Appelbaum <jacob@appelbaum.net>
+karsten = Karsten Loesing <<karsten.loesing@gmx.net>
+coderman = Martin Peck <coder@peertech.org>
+weasel = Peter Palfrader <peter@palfrader.org>

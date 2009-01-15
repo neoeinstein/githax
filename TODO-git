@@ -1,0 +1,8 @@
+finish commands
+	- figure out hooks and config
+figure out how to allow ~foo access on gitd.
+get from arma:
+	ideas for group-granularity.  We do not need to give people push
+	rights!  Only the leads for each project.
+	http/https git support
+
