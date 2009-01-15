@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Script from http://frank.thomas-alfeld.de/wp/2008/08/30/converting-git-svn-tag-branches-to-real-tags/
+
+for branch in `git branch -r`; do
+    if [ `echo $branch | egrep "svn/tags/.+$"` ]; then
+        version=`basename $branch`
+        subject=`git log -1 --pretty=format:"%s" $branch`
+        export GIT_COMMITTER_DATE=`git log -1 --pretty=format:"%ci" $branch`
+
+        echo "Tag $version [Y/n]?"
+        read yesno
+        if [ -z $yesno ] || [ $yesno = "Y" ]; then
+            git tag -s -f -m "$subject" "debian/$version" "$branch^"
+            git branch -d -r $branch
+        fi
+    fi
+done
