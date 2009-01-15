@@ -1,13 +1,28 @@
+# Edit your ~/.gitconfig to contain:
+# [user]
+#	name = Firstname Lastname
+#	email = Your Public Email
+
+# With no leading #, obviously.
+
+export GITHAX=/path/to/this/directory
+
 # Edit the authors file.  Make sure _everybody_ is in it.
 
 mkdir thandy_tmp
 cd thandy_tmp
 git svn init --trunk=updater/trunk --branches=updater/branches --tags=updater/tags --prefix=svn/ file:///home/or/svnrepo/
-git svn fetch --authors-file=../authors.txt
+git svn fetch --authors-file=$GITHAX/authors.txt
 
-# Set up local branches and tags: git clone will not preserve these.
-# git branch [newname] svn/[oldname]
-# git tag ????
+# Set up local branches: git clone will not preserve these.
+#    git branch [newname] svn/[oldname]
+#    or use the convertBranches script
+
+# Set up local tags: git clone will not preserve these
+#    see the convertTags script for guidance how, though you may want to hack it
+
+# Delete branches and tags that you don't want
+#   git branch -d badBranch
 
 # Set up a gitignore file
 git svn show-ignore > .gitignore
@@ -18,15 +33,29 @@ git commit -m 'Add a gitignore file.'
 cd ..
 git clone --bare thandy_tmp thandy.git
 # Edit the configuration
+cp $GITHAX/config thandy.git
+vim thandy.git/config
+
 # Edit the hooks
 #     - Email hook
+cp /home/or/git-hooks/post-receive thandy.git/hooks
+chmod +x thandy.git/hooks/post-receive
+
 #     - CVS-notification hook
+# XXXX
 #     - git-update-server-info hook
+chmod +x thandy.git/hooks/post-update
+
 #     - tag acl hooks
-# Put it in /var/cache/git
+# NOT NOW.
+
+# Chgrp and chmod+s stuff so the right group can rw it. Make this restrictive!
+
+# Link it in /var/cache/git
+
 # Add the file that makes it get served
 touch thandy.git/git-daemon-export-ok
-# Chgrp and chmod+s stuff so the write group can rw it. Make this restrictive!
+
 
 # Add a note to the SVN to say that it has moved.
 
