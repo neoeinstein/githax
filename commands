@@ -41,8 +41,6 @@ vim thandy.git/config
 cp /home/or/git-hooks/post-receive thandy.git/hooks
 chmod +x thandy.git/hooks/post-receive
 
-#     - CVS-notification hook
-# XXXX
 #     - git-update-server-info hook
 chmod +x thandy.git/hooks/post-update
 
