@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Based on script from http://frank.thomas-alfeld.de/wp/2008/08/30/converting-git-svn-tag-branches-to-real-tags/
+#untested
+
+for branch in `git branch -r |grep -v svn/tags`; do
+    name=`basename $branch`
+
+    echo "Tag $name [Y/n]?"
+    read yesno
+
+    if [ -z $yesno ] || [ $yesno = "Y" ]; then
+        git branch $name $branch
+	dit -d -r $branch
+    fi
+done
