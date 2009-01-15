@@ -12,5 +12,6 @@ AFTER PROJECTS CONVERT
 Figure out nsabot address from weasel.  Should the post-commit-diff
 script cc it, or will the bot subscribe to or-cvs?
 
+
 http/https git support: later.  possibly via mirror to byblos.
 
