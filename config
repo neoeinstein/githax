@@ -1,0 +1,11 @@
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = true
+        logallrefupdates = true
+        sharedrepository = 2
+[receive]
+        denyNonFastforwards = true
+[hooks]
+        mailinglist = or-cvs@freehaven.net
+        projectname = PROJECT_NAME_HERE
