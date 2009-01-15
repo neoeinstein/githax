@@ -1,8 +1,10 @@
-finish commands
-	- figure out hooks and config
+finish commands file
+        - figure out hooks and config
+	- figure out tags and branches
 figure out how to allow ~foo access on gitd.
+        - Arma needs to start git-daemon with --user-path
 get from arma:
-	ideas for group-granularity.  We do not need to give people push
-	rights!  Only the leads for each project.
-	http/https git support
+        - ideas for group-granularity.  We do not need to give people push
+          rights!  Only the leads for each project.
+        - http/https git support
 
