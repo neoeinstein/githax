@@ -1,10 +1,11 @@
-finish commands file
-        - figure out hooks and config
-	- figure out tags and branches
-figure out how to allow ~foo access on gitd.
-        - Arma needs to start git-daemon with --user-path
+Figure out nsabot address from weasel.  Should the post-commit-diff
+script cc it, or will the bot subscribe to or-cvs?
+
 get from arma:
+        - Arma needs to start git-daemon with --user-path
         - ideas for group-granularity.  We do not need to give people push
           rights!  Only the leads for each project.
-        - http/https git support
+	- groups for each project.
+        - http/https git support: later
+
 
