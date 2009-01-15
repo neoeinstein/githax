@@ -48,14 +48,15 @@ chmod +x thandy.git/hooks/post-update
 # NOT NOW.
 
 # Chgrp and chmod+s stuff so the right group can rw it. Make this restrictive!
+#XXXX
 
-# Link it in /var/cache/git
+# Put it in /var/cache/git
 
 # Add the file that makes it get served
 touch thandy.git/git-daemon-export-ok
 
-
 # Add a note to the SVN to say that it has moved.
+# XXXXXX
 
 # Tell everybody to set themselves up.  This means, at minimum:
 #   Set up a .gitconfig
