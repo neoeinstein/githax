@@ -7,15 +7,13 @@ sebastian = Sebastian Hahn <sebastian@torproject.org>
 weasel = Peter Palfrader <peter@palfrader.org>
 
 # These are all the svn user ids as of 18118.  We don't need to get
-# people who only translate 
-# 
+# people who only translate.
 #
 # Urz
 # aas23
 # aleksei
 # ampleyfly
 # anonym
-# arma
 # badbytes
 # benedikt
 # bergo
@@ -24,7 +22,6 @@ weasel = Peter Palfrader <peter@palfrader.org>
 # c
 # chiussi
 # chrisw
-# coderman
 # djhasis
 # double
 # fallon
@@ -32,7 +29,6 @@ weasel = Peter Palfrader <peter@palfrader.org>
 # goodell
 # guest
 # hanru
-# ioerror
 # jan
 # kaner
 # kasimir
@@ -42,7 +38,6 @@ weasel = Peter Palfrader <peter@palfrader.org>
 # mikeperry
 # montrose
 # moxie
-# nickm
 # pde
 # phobos
 # pootle
@@ -51,13 +46,11 @@ weasel = Peter Palfrader <peter@palfrader.org>
 # ruben
 # saakan99
 # sah
-# sebastian
 # shava
 # sjm217
 # sn275
 # squires
 # syverson
 # thomass
-# weasel
 # ygrek
 # zed
