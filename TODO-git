@@ -1,13 +1,15 @@
-Figure out nsabot address from weasel.  Should the post-commit-diff
-script cc it, or will the bot subscribe to or-cvs?
+BEFORE ANY PROJECTS CONVERT
 
 get from arma:
-        - Arma needs to start git-daemon with --user-path
         - ideas for group-granularity.  We do not need to give people push
           rights!  Only the leads for each project.
 	- groups for each project.
-        - http/https git support: later
-	- see if have @commit.noreply.org is already on or-cvs.
 
 Write a little tutorial.
 
+AFTER PROJECTS CONVERT
+
+Figure out nsabot address from weasel.  Should the post-commit-diff
+script cc it, or will the bot subscribe to or-cvs?
+
+http/https git support: later
