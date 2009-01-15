@@ -1,4 +1,0 @@
-arma = Roger Dingledine <arma@mit.edu>
-coderman = Martin Peck <coder@peertech.org>
-ioerror = Jacob Appelbaum <jacob@appelbaum.net>
-nickm = Nick Mathewson <nickm@torproject.org>
