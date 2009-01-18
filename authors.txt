@@ -1,7 +1,7 @@
 arma = Roger Dingledine <arma@torproject.org>
 coderman = Martin Peck <coder@peertech.org>
 ioerror = Jacob Appelbaum <jacob@appelbaum.net>
-karsten = Karsten Loesing <<karsten.loesing@gmx.net>
+karsten = Karsten Loesing <karsten.loesing@gmx.net>
 nickm = Nick Mathewson <nickm@torproject.org>
 sebastian = Sebastian Hahn <sebastian@torproject.org>
 weasel = Peter Palfrader <peter@palfrader.org>
