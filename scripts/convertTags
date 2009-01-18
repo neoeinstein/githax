@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Based on cript from http://frank.thomas-alfeld.de/wp/2008/08/30/converting-git-svn-tag-branches-to-real-tags/
+# Based on script from http://frank.thomas-alfeld.de/wp/2008/08/30/converting-git-svn-tag-branches-to-real-tags/
 
 for branch in `git branch -r`; do
     if [ `echo $branch | egrep "svn/tags/.+$"` ]; then
