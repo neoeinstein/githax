@@ -1,6 +1,12 @@
 How to use Git to work on Thandy
 ================================
 
+If you have time
+----------------
+
+First, read and understand gitcore-tutorial, and/or gittutorial, and/or
+the git user's manual.
+
 If you know how to use Git
 --------------------------
 
@@ -110,10 +116,84 @@ to tell Git what to commit, and then we use 'git commit' without the
 % git commit
 -----
 
+The files that have been added but not yet committed are in a structure
+called the "index".  You can change your mind about a file you have
+added to the index with 'git reset'.  You can throw away all local
+non-added changes to a file with 'git checkout'.
+
+
+----
+% git add file1
+% git add file2
+
+  (Oh wait, I don't want to commit file2!)
+% git reset file2
+file2: needs update
+% git commit
+% git status
+# On branch ftp
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#
+#       modified:   file2
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+  (On second thought, I don't want my changes to file2 at all.)
+% git checkout file2
+----
+
+There are more options to reset, add, and checkout that you will
+eventually want to know about, but that should be enough for now.
+
+To see what changes you've made on the ftp branch, you can do
+
+----
+% git log master..ftp
+----
+
+You can just say "git log master.." if you're on the ftp branch.  If you
+want to see the associated patches one by one, along with the log, say
+'git log -p master..".  (The 'master..ftp' notation means, "Show me
+every commit that's in ftp but not in master.")
+
+If you say 'git diff master' instead of 'git log master..', you can
+see the changes you've made in unified diff format.  You can also say
+'git diff' to see the changes that are in your working directory,
+'git diff --cached' to see the changes in your index, and
+'git diff HEAD' to see the changes since your last commit.
+
+
+A NOTE ON COMMIT MESSAGES: Many Git tools (like the commit emails, and
+the shortlogs) will give better output if commit messages come in a
+special format.  The first line of the commit message should be a short
+"Subject", summarizing the contents of the commit.  There should then be
+a blank line, and the rest of your commit message, in as many paragraphs
+as you want.
 
 
 
-A NOTE ON COMMIT MESSAGES: Many Git tools give better output if commit
-messages come in a special format.  The first line of the commit message
-should be a short "Subject", summarizing the contents of the commit.
-There should then be a new 
+If you don't know how to use Git: Staying up to date.
+-----------------------------------------------------
+
+
+While you work, there's an upstream repository that's changing too.
+You can update your copy of it with
+
+-----
+% git fetch git://git.torproject.org/git/thandy
+-----
+
+That's pretty verbose.  Fortunately, since you started by cloning from
+that URL, it has the alias "origin":
+
+-----
+% git fetch origin
+-----
+
+You can use the 'git remote' command to create aliases for other remote
+repositories.  Run 'git help remote' to learn more.
+
+You might have noticed that after you fetched origin, you didn't
+necessarily see any 
