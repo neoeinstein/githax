@@ -1,0 +1,119 @@
+How to use Git to work on Thandy
+================================
+
+If you know how to use Git
+--------------------------
+
+If you know how to use Git, all you need to know is that the official
+Thandy repository is at
+        git://git.torproject.org/git/thandy
+and that if you're updating the official repository, ssh access is at:
+        ssh://git.torproject.org/var/cache/git/thandy
+
+If you don't know how to use Git: Setting up your git
+-----------------------------------------------------
+
+First, make sure you have Git 1.5.x or later installed.  Using earlier
+versions should probably still work, but I don't have experience with them,
+so I can't help you.
+
+Second, edit your ~/.gitconfig file so that Git commits from you have a
+useful name attached.  It should look something like
+
+------------------------------
+[user]
+        name = Nick Mathewson
+        email = nickm@torproject.org
+------------------------------
+
+except that you shouldn't claim to be me.
+
+
+If you don't know how to use Git: Getting started
+-------------------------------------------------
+
+Now we can fetch the repository!  I like to do all my development under
+~/src/projectname, so I'll start with:
+
+-----
+% cd src
+% git clone git://git.torproject.org/git/thandy
+-----
+
+There's now a '~/src/thandy' directory with the latest Thandy in it.  I
+can build and edit and mess with this source to my heart's content.
+
+All the Git metadata for my project lives in ~/src/thandy/.git , so it's
+safe to move your checkout around wherever or rename it if you don't
+like it.
+
+Let's mess around with the repository a bit.
+
+-----
+% git status
+# On branch master
+nothing to commit (working directory clean)
+-----
+
+This means we're on the 'master' branch, with no local changes.  The
+master branch of a repository is like the 'trunk' branch in Subversion.
+
+In Git, branches are cheap and local.  It's good practice to start a new
+cheap local branch whenever you start working on a new feature or set of
+features.  This makes our commits neater, and makes it easier to hold
+off on pushing work into the mainline.
+
+Let's pretend we're adding FTP support to Thandy.  We'll want to make a
+new branch to work on it, like this:
+
+-----
+% git checkout -b ftp
+-----
+
+The checkout command switches branches.  Using the '-b' switch makes it
+create a new branch.  By default, it starts the branch based on the
+current branch.  We could also have said 'git checkout -b ftp master' to
+make it start at the master branch explicitly.
+
+Anyway, let's see if it worked!
+
+-----
+% git branch
+* ftp
+  master
+-----
+
+Yup.  There are two branches, and we're on a branch called 'ftp'.
+
+You can do a lot of other things with the 'git branch' command.  For
+more information on git branch, just type 'git help branch'.  For that
+matter, you can get help on any git command with 'git help commandname'.
+
+Now let's say we have work to commit on our branch.  The easiest way to
+commit all of our changes is to say:
+
+-----
+% git commit -a
+-----
+
+This asks us for a commit message, and commits every changed file.
+
+If we only want to commit some files, or if we want to add new files
+that were not previously in the repository, we use the 'git add' command
+to tell Git what to commit, and then we use 'git commit' without the
+'-a' flag to commit them.
+
+-----
+% git add changedFile1
+% git add changedFile2
+% git add newfile
+% git commit
+-----
+
+
+
+
+A NOTE ON COMMIT MESSAGES: Many Git tools give better output if commit
+messages come in a special format.  The first line of the commit message
+should be a short "Subject", summarizing the contents of the commit.
+There should then be a new 
