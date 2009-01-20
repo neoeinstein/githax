@@ -1,11 +1,15 @@
 How to use Git to work on Thandy
 ================================
 
-If you have time
+Before you start
 ----------------
 
-First, read and understand gitcore-tutorial, and/or gittutorial, and/or
-the git user's manual.
+First, read and understand the Git Tutorial (man gittutorial) and maybe
+gittutorial-2.  It is very short and helpful.
+
+If you have more time, read the Git user manual.
+
+
 
 If you know how to use Git
 --------------------------
@@ -15,6 +19,8 @@ Thandy repository is at
         git://git.torproject.org/git/thandy
 and that if you're updating the official repository, ssh access is at:
         ssh://git.torproject.org/var/cache/git/thandy
+
+There.  Done.  Go use git; you know How.
 
 If you don't know how to use Git: Setting up your git
 -----------------------------------------------------
@@ -164,6 +170,8 @@ see the changes you've made in unified diff format.  You can also say
 'git diff --cached' to see the changes in your index, and
 'git diff HEAD' to see the changes since your last commit.
 
+If you want to generate a set of patches to mail to the maintainer,
+use 'git format-patch' instead of diff or log.
 
 A NOTE ON COMMIT MESSAGES: Many Git tools (like the commit emails, and
 the shortlogs) will give better output if commit messages come in a
@@ -173,9 +181,8 @@ a blank line, and the rest of your commit message, in as many paragraphs
 as you want.
 
 
-
-If you don't know how to use Git: Staying up to date.
------------------------------------------------------
+Staying up to date.
+-------------------
 
 
 While you work, there's an upstream repository that's changing too.
@@ -195,5 +202,102 @@ that URL, it has the alias "origin":
 You can use the 'git remote' command to create aliases for other remote
 repositories.  Run 'git help remote' to learn more.
 
-You might have noticed that after you fetched origin, you didn't
-necessarily see any 
+You might have noticed that after you fetched the origin, you didn't
+see any changes in your branches.  That's because "fetch" by default
+only downloads things; it doesn't merge them.  To fetch and merge at the
+same time, use "git pull" in the master branch:
+
+----
+% git checkout master
+% git pull
+----
+
+Assuming there are no changes in your master branch, this will cause a
+'fast-forward' merge: all the changes from upstream get appended to your
+history, and the head of the 'master' branch now just points at them.
+
+If there are changes, git will try to merge for you.
+
+Now, what should we do about our local ftp branch?  It's still based on
+the pre-pull  version.  We have a few choices.
+
+1. We could let it stay based on the old version until we're ready to
+   merge it into our master branch, or send it in as a patch, or
+   whatever.
+
+2. We could merge in changes from the master branch:
+
+-----
+% git checkout ftp
+% git merge master
+-----
+
+   This might create a new merge commit, as appropriate.
+
+3. We could "rebase" the ftp branch to the head of the master.  This, in
+   effect, makes a new ftp branch against the head of master, and copies
+   over all the commits from the old ftp branch into new commits onto
+   the new ftp branch.
+
+-----
+% git checkout ftp
+% git rebase master
+-----
+
+   This is a fine thing to do on a _local_ branch, but you should never
+   do it (or any other kind of "history rewriting") on a branch you have
+   published to others.
+
+
+
+Sharing with others.
+--------------------
+
+It's nice to have a public repository that other people can pull from.
+You can set one up pretty easily if you have a Unix machine, or an
+account on Moria.
+
+The writeup in the Git manual at:
+
+http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#public-repositories
+
+is really all you need to read here.  If you have an account on Moria,
+just do:
+
+--------------------
+% mkdir ~/git
+% cd ~/git
+% git clone --bare /var/cache/git/thandy.git
+% touch thandy.git/git-daemon-export-oik
+--------------------
+
+And now you have a new Git repository that other people can fetch from
+git://git.torproject.org/~USERNAME/git/thandy
+
+For you, that's ssh://git.torproject.org/~USERNAME/git/thandy : you can
+follow the instructions at
+
+http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#pushing-changes-to-a-public-repository
+
+to push branches to your public repository.
+
+
+If you don't have an account on Moria, see the rest of the documentation
+in that part of the Git manual.  Or go use github: it's pretty neat.
+
+
+Merging from others
+-------------------
+
+XXXX writeme.
+
+
+
+
+Further reading
+---------------
+
+To see how the git folks do it:
+
+http://www.kernel.org/pub/software/scm/git/docs/howto/maintain-git.txt
+
