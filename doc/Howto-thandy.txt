@@ -17,7 +17,8 @@ If you know how to use Git
 If you know how to use Git, all you need to know is that the official
 Thandy repository is at
         git://git.torproject.org/git/thandy
-and that if you're updating the official repository, ssh access is at:
+and that if you're updating the official repository (we will tell you
+if you're such a person), ssh access is at:
         ssh://git.torproject.org/var/cache/git/thandy
 
 There.  Done.  Go use git; you know How.
@@ -38,7 +39,9 @@ useful name attached.  It should look something like
         email = nickm@torproject.org
 ------------------------------
 
-except that you shouldn't claim to be me.
+except that you shouldn't claim to be me. Make sure to tell us what you
+set there if you have ever committed to svn, so we can attribute those svn
+commits to you.
 
 
 If you don't know how to use Git: Getting started
@@ -268,7 +271,7 @@ just do:
 % mkdir ~/git
 % cd ~/git
 % git clone --bare /var/cache/git/thandy.git
-% touch thandy.git/git-daemon-export-oik
+% touch thandy.git/git-daemon-export-ok
 --------------------
 
 And now you have a new Git repository that other people can fetch from
