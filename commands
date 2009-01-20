@@ -19,7 +19,17 @@ git svn fetch --authors-file=$GITHAX/authors.txt
 #    or use the convertBranches script
 
 # Set up local tags: git clone will not preserve these
-#    see the convertTags script for guidance how, though you may want to hack it
+#    See the convertTags script for guidance how, though you may want to hack
+#    it.  In particular, you might want to replace ancient CVS tagging
+#    conventions (tor-0_1_0-alpha) with nice new ones (v0.1.0-alpha).
+#
+#    The script signs its tags.  If you don't want that, edit it to pass
+#    -s instead of -a.
+#
+#    If you wind up signing the tag, you may wind having to copy the whole
+#    tree over to some machine where the key you want lives, unless you
+#    are okay with having your private key live on moria.
+
 
 # Delete branches and tags that you don't want
 #   git branch -d badBranch
