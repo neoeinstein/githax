@@ -169,9 +169,10 @@ every commit that's in ftp but not in master.")
 
 If you say 'git diff master' instead of 'git log master..', you can
 see the changes you've made in unified diff format.  You can also say
-'git diff' to see the changes that are in your working directory,
+'git diff' to see the changes that are in your working directory but not
+in your index,
 'git diff --cached' to see the changes in your index, and
-'git diff HEAD' to see the changes since your last commit.
+'git diff HEAD' to see all the changes since your last commit.
 
 If you want to generate a set of patches to mail to the maintainer,
 use 'git format-patch' instead of diff or log.
@@ -267,12 +268,12 @@ http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#public-reposito
 is really all you need to read here.  If you have an account on Moria,
 just do:
 
---------------------
+-----
 % mkdir ~/git
 % cd ~/git
 % git clone --bare /var/cache/git/thandy.git
 % touch thandy.git/git-daemon-export-ok
---------------------
+-----
 
 And now you have a new Git repository that other people can fetch from
 git://git.torproject.org/~USERNAME/git/thandy
@@ -292,10 +293,61 @@ in that part of the Git manual.  Or go use github: it's pretty neat.
 Merging from others
 -------------------
 
-XXXX writeme.
+As mentioned above, you can specify additional remotes for your git
+repository. Let's say Nick has published his ftp branch, and you want to
+give it a shot. It is not yet ready to be merged to the master branch, so
+you cannot just pull from the master branch. Nick tells you his branch is
+called master, and his repository lives at
+git://git.torproject.org/~nickm/git/thandy.
 
+Now it's time for you to add a remote for nicks repository, get his
+published branches, and make a local branch that tracks his ftp branch:
 
+-----
+%git remote add nick git://git.torproject.org/~nickm/git/thandy
+%git fetch nick
+%git checkout -b nick_ftp nick/ftp
+-----
 
+This will have switched you to your new local branch nick_ftp, and you can
+build and test the ftp stuff that nick made. If you're done with testing,
+just type
+
+-----
+%git checkout master
+-----
+
+to go back to your master branch. Maybe, a few days later, Nick has made
+some changes that you would like to look at. First, you fetch his stuff
+again and switch to your local branch that tracks his ftp branch:
+
+-----
+%git fetch nick
+%git checkout nick_ftp
+-----
+
+git will tell you that there has been an update to the branch that you
+checked out. To get the new stuff in, and rebase any changes that you may
+have made in the meantime, type:
+
+-----
+%git rebase
+-----
+
+This fast-forwards the branch if you haven't made changes, or first
+applies the changes from nick's repository and the replays your changes on
+top of the result. If you then want to make a patch based on your changes
+to send to nick, it's easy. Use git format-patch (see above).
+
+If you want to actually merge his ftp branch into one of your other local
+branches, do this:
+
+-----
+%git checkout branch
+%git merge nick_ftp
+-----
+
+Git will automatically merge into nick_ftp.
 
 Further reading
 ---------------
