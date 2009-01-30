@@ -271,7 +271,7 @@ just do:
 -----
 % mkdir ~/git
 % cd ~/git
-% git clone --bare /var/cache/git/thandy.git
+% git clone --bare /var/cache/git/thandy.git thandy.git
 % touch thandy.git/git-daemon-export-ok
 -----
 
@@ -305,7 +305,7 @@ published branches, and make a local branch that tracks his ftp branch:
 
 -----
 %git remote add nick git://git.torproject.org/~nickm/git/thandy
-%git fetch nick
+%git fetch nickm
 %git checkout -b nick_ftp nick/ftp
 -----
 
