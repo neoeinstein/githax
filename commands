@@ -60,13 +60,15 @@ chmod +x thandy.git/hooks/post-update
 # Chgrp and chmod+s stuff so the right group can rw it. Make this restrictive!
 #XXXX
 
-# Put it in /var/cache/git
+# Put it in /srv/git
 
 # Add the file that makes it get served
 touch thandy.git/git-daemon-export-ok
 
 # Add a note to the SVN to say that it has moved.
-# XXXXXX
+
+# Set it up to get mirrored in HTTP and listed on git.torproject.org.
+# See the instructions at ~torsvnwww/GIT-STUFF for more information.
 
 # Tell everybody to set themselves up.  This means, at minimum:
 #   Set up a .gitconfig
