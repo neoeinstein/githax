@@ -1,0 +1,32 @@
+#!/bin/sh
+
+URL=$1
+barename=`basename $1 | sed -e 's/\.git$//;' `
+
+if [ -e ~/git/"$barename.git" ] ; then
+   echo ~/git/$barename.git already exists: exiting.
+   exit 1
+fi
+
+echo "Cloning $URL to ~/git/$barename.git in 5"
+
+sleep 5
+
+echo mkdir -p ~/git
+mkdir -p ~/git || exit 1
+echo cd ~/git/
+cd ~/git/ || exit 1
+echo git clone --bare $URL $barename.git
+git clone --bare $URL $barename.git || exit 1
+echo cd $barename.git
+cd $barename.git || exit 1
+echo chmod +x hooks/post-update
+chmod +x hooks/post-update || exit 1
+echo git config receive.denyNonFastforwards true
+git config receive.denyNonFastforwards true || exit 1
+echo git config core.logallrefupdates true
+git config core.logallrefupdates true || exit 1
+echo touch git-daemon-export-ok
+touch git-daemon-export-ok || exit 1
+
+echo ~/git/$barename.git is now set as a public-facing repo.
