@@ -5,6 +5,6 @@ PROJNAME="`git config --get hooks.projectname`"
 for fn in "$@"; do
     branch=`basename "$fn"`
     if [ -d "$HOME/git/checkout/$PROJNAME/$branch" ] ; then
-        cd "$HOME/git/checkout/$PROJNAME/$branch" && git pull
+        cd "$HOME/git/checkout/$PROJNAME/$branch" && env -i git pull
     fi
 done
