@@ -12,20 +12,47 @@ echo "Cloning $URL to ~/git/$barename.git in 5"
 
 sleep 5
 
+# Set up a ~/git directory, unless we already have one.
 echo mkdir -p ~/git
 mkdir -p ~/git || exit 1
+
+# cd into it.
 echo cd ~/git/
 cd ~/git/ || exit 1
+
+# Clone the base repository from git://foo into foo.git
 echo git clone --bare $URL $barename.git
 git clone --bare $URL $barename.git || exit 1
+
+# cd into the new repository.
 echo cd $barename.git
 cd $barename.git || exit 1
+
+if [ -e hooks/post-update.sample -a ! -e hooks/post-update ] ; then
+   echo cp hooks/post-update.sample hooks/post-update
+   cp hooks/post-update.sample hooks/post-update
+fi
+
+# Enable the post-update script that refreshes the index file that makes http
+# updates work.
 echo chmod +x hooks/post-update
 chmod +x hooks/post-update || exit 1
+
+# Do not allow any non-fast-forward branch updates: every new head must
+# be a strict descendant of the last head, and all merging needs to happen
+# on the user side before you push.
 echo git config receive.denyNonFastforwards true
 git config receive.denyNonFastforwards true || exit 1
+
+# Retain all reference changes
 echo git config core.logallrefupdates true
 git config core.logallrefupdates true || exit 1
+
+# Give the project a name that will be used by some of the hook scripts.
+echo git config hooks.projectname "$barename"
+git config hooks.projectname "$barename"
+
+# Mark this repo as okay for export via git://
 echo touch git-daemon-export-ok
 touch git-daemon-export-ok || exit 1
 
