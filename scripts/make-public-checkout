@@ -1,0 +1,34 @@
+#!/bin/sh
+
+PROJECT=$1
+BRANCH=$2
+
+if [ -z "$PROJECT" ] ; then
+   echo "Syntax: $0 <Project> <Branch>"
+   exit 1
+fi
+
+if [ -z "$BRANCH" ] ; then
+   echo "Syntax: $0 <Project> <Branch>"
+   exit 1
+fi
+
+
+if [ -d "$HOME/git/checkout/$PROJECT/$BRANCH" ] ; then
+   echo "$HOME/git/checkout/$PROJECT/$BRANCH already exists; exiting."
+   exit 0
+fi
+
+if [ ! -d "$HOME/git/${PROJECT}.git" ] ; then
+   echo "$HOME/git/${PROJECT}.git doesn't seem to exist; exiting."
+   exit 1
+fi
+
+mkdir -p "$HOME/git/checkout/$PROJECT" || true
+cd "$HOME/git/checkout/$PROJECT"
+git clone -l "$HOME/git/${PROJECT}.git" "$BRANCH"
+cd "$BRANCH"
+if [ "$BRANCH" != master ]; then
+  git branch "$BRANCH" "origin/$BRANCH"
+  git checkout "$BRANCH"
+fi
