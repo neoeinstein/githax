@@ -28,10 +28,15 @@ git clone --bare $URL $barename.git || exit 1
 echo cd $barename.git
 cd $barename.git || exit 1
 
-if [ -e hooks/post-update.sample -a ! -e hooks/post-update ] ; then
-   echo cp hooks/post-update.sample hooks/post-update
-   cp hooks/post-update.sample hooks/post-update
-fi
+cat > hooks/post-update <<EOF
+#!/bin/sh
+
+# Standard tor-project post-update script.
+
+/home/or/git-helpers/update-public-checkout "$@" 2>&1 >/dev/null & disown
+exec git-update-server-info
+EOF
+
 
 # Enable the post-update script that refreshes the index file that makes http
 # updates work.
