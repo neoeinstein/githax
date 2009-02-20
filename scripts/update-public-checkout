@@ -1,0 +1,10 @@
+#!/bin/sh
+
+PROJNAME="`git config --get hooks.projectname`"
+
+for fn in "$@"; do
+    branch=`basename "$fn"`
+    if [ -d "~/git/checkout/$PROJNAME/$branch" ] ; then
+        cd "~/git/checkout/$PROJNAME/$branch" && git pull
+    fi
+done
