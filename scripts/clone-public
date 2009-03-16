@@ -9,6 +9,7 @@ if [ -e ~/git/"$barename.git" ] ; then
 fi
 
 echo "Cloning $URL to ~/git/$barename.git in 5"
+echo This script assumes that you are on Moria.
 
 sleep 5
 
