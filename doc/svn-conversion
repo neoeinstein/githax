@@ -11,6 +11,8 @@ export GITHAX=/path/to/this/directory
 
 mkdir thandy_tmp
 cd thandy_tmp
+# Consider using the --no-metadata flag here if you don't care about being
+# able to refer back to svn revisions.
 git svn init --trunk=updater/trunk --branches=updater/branches --tags=updater/tags --prefix=svn/ file:///home/or/svnrepo/
 git svn fetch --authors-file=$GITHAX/authors.txt
 
