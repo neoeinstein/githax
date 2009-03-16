@@ -297,7 +297,7 @@ As mentioned above, you can specify additional remotes for your git
 repository. Let's say Nick has published his ftp branch, and you want to
 give it a shot. It is not yet ready to be merged to the master branch, so
 you cannot just pull from the master branch. Nick tells you his branch is
-called master, and his repository lives at
+called ftp, and his repository lives at
 git://git.torproject.org/~nickm/git/thandy.
 
 Now it's time for you to add a remote for nicks repository, get his
@@ -305,7 +305,7 @@ published branches, and make a local branch that tracks his ftp branch:
 
 -----
 %git remote add nick git://git.torproject.org/~nickm/git/thandy
-%git fetch nickm
+%git fetch nick
 %git checkout -b nick_ftp nick/ftp
 -----
 
@@ -340,14 +340,14 @@ top of the result. If you then want to make a patch based on your changes
 to send to nick, it's easy. Use git format-patch (see above).
 
 If you want to actually merge his ftp branch into one of your other local
-branches, do this:
+branches called $branch, do this:
 
 -----
-%git checkout branch
+%git checkout $branch
 %git merge nick_ftp
 -----
 
-Git will automatically merge into nick_ftp.
+Git will automatically merge nick_ftp into $branch.
 
 Further reading
 ---------------
