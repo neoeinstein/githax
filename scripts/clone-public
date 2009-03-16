@@ -62,3 +62,5 @@ echo touch git-daemon-export-ok
 touch git-daemon-export-ok || exit 1
 
 echo ~/git/$barename.git is now set as a public-facing repo.
+echo For public access, use git://git.torproject.org/~$USER/git/$barename.git
+echo For push access, use ssh://$USER@moria.seul.org/~/git/$barename.git
