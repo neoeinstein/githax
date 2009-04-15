@@ -5,28 +5,35 @@ kloesing = Karsten Loesing <karsten.loesing@gmx.net>
 nickm = Nick Mathewson <nickm@torproject.org>
 sebastian = Sebastian Hahn <sebastian@torproject.org>
 weasel = Peter Palfrader <peter@palfrader.org>
+Urz = Christian King <urzumph@gmail.com>
+aas23 = Andrei Serjantov <aas23@freehaven.net>
+badbytes = Matej Pjafjar <badbytes@freehaven.net>
+bergo = Felipe Bergo <bergo@seul.org>
+c = Chris Palmer <c@seul.org>
+chiussi = Mike Chiussi <chiussi@gmail.com>
+chrisw = Christian Wilms <christian.wilms@gmx.de>
+goodell = Geoff Goodell <goodell@eecs.harvard.edu>
+mikeperry = Mike Perry <mikeperry-git@fscked.org>
+montrose = Bruce Montrose <montrose@itd.nrl.navy.mil>
+phobos = Andrew Lewman <andrew@torproject.org>
+sah = Steven Hazel <sah@freehaven.net>
+sjm217 = Steven Murdoch <Steven.Murdoch@cl.cam.ac.uk>
+syverson = Paul Syverson <syverson@itd.nrl.navy.mil>
+thomass = Thomas Sjögren <thomas@northernsecurity.net>
 
 # These are all the svn user ids as of 18118.  We don't need to get
 # people who only translate.
 #
-# Urz
-# aas23
 # aleksei
 # ampleyfly
 # anonym
-# badbytes
 # benedikt
-# bergo
 # bogdro
 # bridgefish
-# c
-# chiussi
-# chrisw
 # djhasis
 # double
 # fallon
 # fredzupy
-# goodell
 # guest
 # hanru
 # jan
@@ -35,22 +42,15 @@ weasel = Peter Palfrader <peter@palfrader.org>
 # kloesing
 # le
 # mfr
-# mikeperry
-# montrose
 # moxie
 # pde
-# phobos
 # pootle
 # qbi
 # renner
 # ruben
 # saakan99
-# sah
 # shava
-# sjm217
 # sn275
 # squires
-# syverson
-# thomass
 # ygrek
 # zed
