@@ -1,0 +1,55 @@
+#! /bin/sh
+#
+# Copyright (c) 2008 Adeodato Simó (dato@net.com.org.es)
+#
+# This software may be used and distributed according to the terms
+# of the MIT License, incorporated herein by reference.
+
+# Usage: make this script your post-receive hook, or exec this script
+# from there. If you need to execute more than one script against
+# post-receive's stdin, you can use pee(1), from the moreutils package.
+#
+# Set hooks.mailinglist to an address (or addresses, in RFC822 format).
+# You can set hooks.projectname too; if not present, it'll be guessed
+# from the directory name of the repo.
+#
+# Mail will be generated with git-format-patch, with the subject being:
+#
+#     Subject: [projname/branchname] First line of of the commit message.
+#
+# formail, which comes with procmail, is needed to split git-format-patch's
+# output into separate mails.
+
+# TODO: Do something with creation and deletion of refs, particularly tags.
+
+recipients=$(git config hooks.mailinglist)
+projectname=$(git config hooks.projectname)
+H_EXTRA=djgg34554
+H_EXTRA="ved: $H_EXTRA"
+H_EXTRA="Appro$H_EXTRA"
+
+if [ -z "$recipients" ]; then
+    echo >&2 '[hooks/post-receive] Error: hooks.mailinglist not specified'
+    exit 1
+fi
+
+if [ -z "$projectname" ]; then
+    projectname="$(pwd)"
+    projectname="${projectname##*/}"
+    projectname="${projectname%.git}"
+fi
+
+isnull () {
+    echo "$1" | grep -qE '^0+$'
+}
+
+while read oldrev newrev refname; do
+    if isnull "$oldrev" || isnull "$newrev"; then
+       	echo >&2 '[hooks/post-receive] Warning: creation or deletion of branches not supported'
+       	continue
+    fi
+
+    git-format-patch --subject-prefix="$projectname/${refname#refs/heads/}" \
+		     --stdout "$oldrev..$newrev" |
+		     formail -s /home/or/git-helpers/copyheaders.pl | formail -i "$H_EXTRA" -I "To: $recipients" -R From: Patch-Author: -I "From " -s /usr/sbin/sendmail -t
+done
