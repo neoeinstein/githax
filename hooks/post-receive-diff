@@ -24,9 +24,6 @@
 
 recipients=$(git config hooks.mailinglist)
 projectname=$(git config hooks.projectname)
-H_EXTRA=djgg34554
-H_EXTRA="ved: $H_EXTRA"
-H_EXTRA="Appro$H_EXTRA"
 
 if [ -z "$recipients" ]; then
     echo >&2 '[hooks/post-receive] Error: hooks.mailinglist not specified'
@@ -51,5 +48,5 @@ while read oldrev newrev refname; do
 
     git-format-patch --subject-prefix="$projectname/${refname#refs/heads/}" \
 		     --stdout "$oldrev..$newrev" |
-		     formail -s /home/or/git-helpers/copyheaders.pl | formail -i "$H_EXTRA" -I "To: $recipients" -R From: Patch-Author: -I "From " -s /usr/sbin/sendmail -t
+		     formail -s /home/or/git-helpers/copyheaders.pl | formail -I "To: $recipients" -R From: Patch-Author: -I "From " -s /usr/sbin/sendmail -t
 done
