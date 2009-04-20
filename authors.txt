@@ -1,25 +1,25 @@
-arma = Roger Dingledine <arma@torproject.org>
-coderman = Martin Peck <coder@peertech.org>
-ioerror = Jacob Appelbaum <jacob@appelbaum.net>
-kloesing = Karsten Loesing <karsten.loesing@gmx.net>
-nickm = Nick Mathewson <nickm@torproject.org>
-sebastian = Sebastian Hahn <sebastian@torproject.org>
-weasel = Peter Palfrader <peter@palfrader.org>
 Urz = Christian King <urzumph@gmail.com>
 aas23 = Andrei Serjantov <aas23@freehaven.net>
+arma = Roger Dingledine <arma@torproject.org>
 badbytes = Matej Pjafjar <badbytes@freehaven.net>
 bergo = Felipe Bergo <bergo@seul.org>
 c = Chris Palmer <c@seul.org>
 chiussi = Mike Chiussi <chiussi@gmail.com>
 chrisw = Christian Wilms <christian.wilms@gmx.de>
+coderman = Martin Peck <coder@peertech.org>
 goodell = Geoff Goodell <goodell@eecs.harvard.edu>
+ioerror = Jacob Appelbaum <jacob@appelbaum.net>
+kloesing = Karsten Loesing <karsten.loesing@gmx.net>
 mikeperry = Mike Perry <mikeperry-git@fscked.org>
 montrose = Bruce Montrose <montrose@itd.nrl.navy.mil>
+nickm = Nick Mathewson <nickm@torproject.org>
 phobos = Andrew Lewman <andrew@torproject.org>
 sah = Steven Hazel <sah@freehaven.net>
+sebastian = Sebastian Hahn <sebastian@torproject.org>
 sjm217 = Steven Murdoch <Steven.Murdoch@cl.cam.ac.uk>
 syverson = Paul Syverson <syverson@itd.nrl.navy.mil>
 thomass = Thomas Sjögren <thomas@northernsecurity.net>
+weasel = Peter Palfrader <peter@palfrader.org>
 
 # These are all the svn user ids as of 18118.  We don't need to get
 # people who only translate.
