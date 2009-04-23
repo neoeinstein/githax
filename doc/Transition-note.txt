@@ -1,0 +1,168 @@
+
+Hello, everyone!  Sometime in the next week or two, I am planning to
+move the repository for Tor software from Subversion to Git.  This will
+only affect the Tor program itself -- other software in the Tor
+Project's Subversion repository will stay where it is for now.
+
+WHAT DOES THAT MEAN?
+
+When we develop software, we use a tool called a version control system
+to keep track of all of the changes we have made to it.  Right now, we
+use Subversion, which is a pretty conservative centralized version
+control design: it manages everything in a big repository on our
+Subversion server.  We're switching to Git, which is a decentralized
+version control system (DVCS): it allows for many repositories existing
+in parallel on different computers.
+
+For more info on Git, see http://git-scm.com/ .
+
+WHY IS TOR SWITCHING TO GIT?
+
+We're pretty sure we can develop more efficiently and effectively with
+Git.  Here are some things that Git gets us:
+
+- Better support for branch merging.
+
+  Subversion lets us make branches easily, but merging a branch is hard.
+  This means that we only tend to make branches when we absolutely must,
+  as for keeping the stable branch separate from the development
+  branch.
+
+  Not being able to merge branches cheaply forces us to decide, for each
+  part of development that takes longer than a few hours to finish,
+  whether to check in an uncompleted version the work, or whether to
+  keep it in an uncommitted state on disk.  Checking in partial work
+  messes up the repository with half-finished, half-tested stuff, but
+  _not_ checking in partial work.
+
+  Good branch support lets us check in each uncompleted batch of work
+  into its own topic-specific branch, and collaborate on uncompleted
+  work, without risking the stability of the main branch until we have
+  something finished and tested to check in.  This way, we won't waste
+  so much energy shipping versions with not-wholly-completed features,
+  or pulling out things that seemed like a good idea at first.
+
+- Better support for distributed collaboration.
+
+  Frequently, I'd like to test out a few versions change on a few
+  computers (or a few dozen) before committing it to the main Tor
+  branch.  To do so now, I need to copy patches from computer to
+  computer, work on them a little here and a little there, and hope that
+  I don't make a mistake about which version is latest.  With a DVCS,
+  anybody can easily share their changes with themselves on multiple
+  computers, and with other people around the Internet, without having
+  to manage patches by hand.
+
+  This isn't just for single-user patching, by the way.  A DVCS like
+  git makes it easy for several people to all work on a branch
+  together, either hosting it themselves, or on a site like github, or
+  everybody having their own copy that they share with one another.
+
+- Better support for offline development.
+
+  I do lots of my work in parks and on airplanes.  The ability to
+  commit offline and check in my commits later keeps me from messing
+  up the tree with huge omnibus patches, like I used to do on
+  Mixminion.
+
+- Better support for security fix development.
+
+  This is a big one for me.  Sometimes, when we get wind of a big
+  security vulnerability, I need to come up with a patch that I can
+  test as much as possible without revealing that the vulnerability
+  exists.  With the Debian OpenSSL problem the other year, I found
+  myself slinging versioned patch files around, begging directory
+  operators to test them, making patches on the patches, and otherwise
+  slowing down the bugfix by not being able to use our regular tools
+  to version it.
+
+- Cryptographic confirmation of repository integrity.
+
+  If someone were to compromise the machine where our SVN repository
+  is hosted, they could probably make changes in the software and its
+  history without getting caught.  With Git, every version is
+  identified by its digest, so it is much harder to damage a
+  compromised repository without being detected.  Knowing the hash of
+  a single version is sufficient verify the entire history up to that
+  version.  Git supports pgp-signed tags, so we can start signing tags
+  inside our repository in the same way we currently sign
+  distributions.
+
+WHAT ARE THE RISKS, AND HOW WILL YOU MITIGATE THEM?
+
+RISK: We may completely scew up the transition and break everything.
+
+  I hope not.  We've already got a procedure that I've tested out with
+  the repositories for Thandy, the Java Torctl, and Puppetor.
+  Obviously, too, we'll be backing up the repository before we start.
+
+RISK: This will totally mess up translations.
+
+  We're not moving the website.  We're not moving anything now except
+  for the Tor program itself; see above.
+
+RISK: People may go gonzo with the ability to do distributed development,
+  and not tell anybody about their patches.
+
+  This is a problem we've already got.  People sometimes write patches
+  without talking to the development community first, and so we wind up
+  with well-written but ultimately useless things, like patches that
+  reimplement features that 0.2.1.x already has against ancient
+  versions of the 0.1.2.x branch.
+
+  Development is already distributed.  What a DVCS enables is better
+  collaboration between distributed devlopers.
+
+RISK: Git may be too hard for people to understand.
+
+  Check out "how does this affect me?" below.  For the operations most
+  people already doing (get latest version from trunk; apply curent
+  changs to latest version;), Git is about as hard as subversion.  The
+  operations that are trickier are ones Subversion doesn't support at
+  all, like working with multiple remote repositories, rebasing
+  branches, or doing complex merges.
+
+RISK: People may go into bike-shed mode, and decide to start a massive
+  flamewar about whether we shouldn't really be using Mercurial or
+  Bazaar or Monotone or Darcs or such.
+
+  There's not much I can do here, other than remind people about the
+  story of the bike shed.  [http://www.bikeshed.com/]
+
+HOW DOES THIS AFFECT ME?
+
+== If you download Tor as a package
+
+  It doesn't affect you at all, except inasmuch as it helps us develop
+  Tor more effectively and get you better work faster.
+
+== If you have been tracking Tor from subversion, but not changing it
+
+  Instead of checking out the repository using "svn checkout", you'll
+  clone it out with "git clone".  Instead of saying "svn update" to
+  see the latest version, you'll say "git pull".
+
+== If you have been writing patches for Tor against subversion, and
+   mailing them in.
+
+  As above, you'll need to use git to get the latest development
+  version, not subversion.  If you do your work on a local git branch,
+  though, you have a better ability to make sure that your patches
+  form a logical sequence, and that they apply cleanly against the
+  latest Tor before you send them in.
+
+  Of course, you can still just do your patches against a working copy,
+  use "git diff" to generate a patch, and email it in.  Just because
+  you have support for local branches and versioning doesn't mean you
+  need to use it.
+
+WHAT SHOULD I DO NOW?
+
+It wouldn't be a bad time to learn Git.
+
+[INSERT LINKS TO GOOD READINGS HERE.]
+
+
+yrs,
+-- 
+Nick Mathewson
