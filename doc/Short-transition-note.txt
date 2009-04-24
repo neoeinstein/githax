@@ -1,0 +1,91 @@
+
+Hello, everyone!  Sometime in the next week or two, I am planning to
+move the repository for Tor software from Subversion to Git.  This will
+only affect the Tor program itself -- other software in the Tor
+Project's Subversion repository will stay where it is for now.
+
+WHAT DOES THAT MEAN?
+
+When we develop software, we use a tool called a version control system
+to keep track of all of the changes we have made to it.  Right now, we
+use Subversion, which is a pretty conservative centralized version
+control design: it manages everything in a big repository on our
+Subversion server.  We're switching to Git, which is a decentralized
+version control system (DVCS): it allows for many repositories existing
+in parallel on different computers.
+
+For more info on Git and its advantages, see http://git-scm.com/ .
+We're mainly switching for:
+
+- Better support for branch merging.
+- Better support for distributed collaboration.
+- Better support for offline development.
+- Better support for security fix development.
+- Cryptographic confirmation of repository integrity.
+
+NOTES:
+
+- Yes, we'll back up before we start.
+- No, I don't know which day the switch will happen on yet.
+- No, the website is not moving out of svn.
+- Yes, this might be a good time to think about the story of the bike shed.
+  [http://www.bikeshed.com/]
+
+HOW DOES THIS AFFECT YOU?
+
+== If you download Tor as a package
+
+  It doesn't affect you at all, except inasmuch as it helps us develop
+  Tor more effectively and get you better work faster.
+
+== If you have been tracking Tor from subversion, but not changing it
+
+  Instead of checking out the repository using "svn checkout", you'll
+  clone it out with "git clone".  Instead of saying "svn update" to
+  see the latest version, you'll say "git pull".
+
+== If you have been writing patches for Tor against subversion, and
+   mailing them in.
+
+  As above, you'll need to use git to get the latest development
+  version, not subversion.  If you do your work on a local git branch,
+  though, you have a better ability to make sure that your patches
+  form a logical sequence, and that they apply cleanly against the
+  latest Tor before you send them in.
+
+  Of course, you can still just do your patches against a working copy,
+  use "git diff" to generate a patch, and email it in.  Just because
+  you have support for local branches and versioning doesn't mean you
+  need to use it.
+
+  We'll be glad to work with people on the mailing lists and the IRC
+  channels to help folks transition along with us.  I'll be sending out
+  links to more detailed instructions as the transition occurs.
+
+For more reading on Git, see:
+
+The Git Tutorial
+  http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html
+  http://www.kernel.org/pub/software/scm/git/docs/gittutorial-2.html
+
+Git for Computer scientists
+  http://eagain.net/articles/git-for-computer-scientists/
+
+The "Everyday Git" quick-reference:
+  http://www.kernel.org/pub/software/scm/git/docs/everyday.html
+
+Git for SVN users:
+  http://www.gnome.org/~newren/eg/git-for-svn-users.html
+
+Two very opinionated Google Tech Talks talks about Git:
+  Randal Schwartz:
+     http://video.google.com/videoplay?docid=-3999952944619245780
+  Linus Torvalds
+     http://www.youtube.com/watch?v=4XpnKHJAok8
+
+And of course, the delightful Git Manual:
+  http://www.kernel.org/pub/software/scm/git/docs/user-manual.html
+
+yrs,
+-- 
+Nick Mathewson
