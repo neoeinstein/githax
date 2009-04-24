@@ -83,8 +83,16 @@ Two very opinionated Google Tech Talks talks about Git:
   Linus Torvalds
      http://www.youtube.com/watch?v=4XpnKHJAok8
 
+Our handy repository of (supposedly) useful Git tools.
+  git://git.torproject.org/git/githax
+See in particular the documentation on using Git with our Thandy
+project; the instructions for Tor should be similar.
+  http://git.torproject.org/checkout/githax/master/doc/Howto-thandy.txt
+
 And of course, the delightful Git Manual:
   http://www.kernel.org/pub/software/scm/git/docs/user-manual.html
+
+
 
 yrs,
 -- 
