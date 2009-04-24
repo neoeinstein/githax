@@ -42,6 +42,11 @@ vim .gitignore
 git add .gitignore
 git commit -m 'Add a gitignore file.'
 
+# Filter svn metadata to a prettier format
+git filter-branch --msg-filter '
+        sed "s/^git-svn-id:[[:space:]]*[^[:space:]]*@\([[:digit:]]\{1,\}\)[[:space:]]*.*$/svn:r\1/"
+    ' -- --all
+
 cd ..
 git clone --bare thandy_tmp thandy.git
 # Edit the configuration
