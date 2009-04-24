@@ -92,8 +92,6 @@ project; the instructions for Tor should be similar.
 And of course, the delightful Git Manual:
   http://www.kernel.org/pub/software/scm/git/docs/user-manual.html
 
-
-
 yrs,
 -- 
 Nick Mathewson
