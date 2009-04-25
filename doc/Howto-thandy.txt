@@ -30,8 +30,19 @@ First, make sure you have Git 1.5.x or later installed.  Using earlier
 versions should probably still work, but I don't have experience with them,
 so I can't help you.
 
-Second, edit your ~/.gitconfig file so that Git commits from you have a
-useful name attached.  It should look something like
+Second, setup Git so that it knows how to attribute your commits. This is
+done using git config:
+
+-----
+% git config --global user.name "Nick Mathewson"
+% git config --global user.email "nickm@torproject.org"
+-----
+
+except you shouldn't claim to be me. Make sure to tell us what you
+set there if you have ever committed to svn, so we can attribute those svn
+commits to you.
+
+This should add the following lines into your ~/.gitconfig file:
 
 ------------------------------
 [user]
@@ -39,10 +50,11 @@ useful name attached.  It should look something like
         email = nickm@torproject.org
 ------------------------------
 
-except that you shouldn't claim to be me. Make sure to tell us what you
-set there if you have ever committed to svn, so we can attribute those svn
-commits to you.
-
+If you already have set up a global .gitconfig, but you want to use a
+different name or email for Thandy, you can override the global user settings
+by running 'git config' without the '--global' argument from inside a
+repository. Before you can do that, though, you'll need to fetch Thandy's
+repository.
 
 If you don't know how to use Git: Getting started
 -------------------------------------------------
