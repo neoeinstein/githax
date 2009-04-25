@@ -368,3 +368,10 @@ To see how the git folks do it:
 
 http://www.kernel.org/pub/software/scm/git/docs/howto/maintain-git.txt
 
+For a better understanding of how merging and rebasing work:
+
+http://www.kernel.org/pub/software/scm/git/docs/git-merge.html
+http://www.kernel.org/pub/software/scm/git/docs/git-rebase.html
+
+And the Git tutorial which is also a good guide to get started:
+http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html
