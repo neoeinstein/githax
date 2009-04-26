@@ -234,6 +234,15 @@ history, and the head of the 'master' branch now just points at them.
 
 If there are changes, git will try to merge for you.
 
+`git pull` is essentially just `git fetch` followed by `git merge`. If you
+already have work that is based on a remote branch, you may want to rebase
+instead of letting `git merge` create an implicit merge commit:
+
+-----
+% git fetch origin
+% git rebase origin/master
+-----
+
 Now, what should we do about our local ftp branch?  It's still based on
 the pre-pull  version.  We have a few choices.
 
